@@ -89,7 +89,18 @@
                     methods:{
                     addCharacter(char)
                     {
-                        this.equation = this.equation + char;
+                        var seznam= ["+","-","%","*","/"];
+                        var zadnjiznak = this.equation[this.equation.length - 1];
+                        if(seznam.includes(char)&& seznam.includes(zadnjiznak))
+                        {
+                            alert("Zamenjaj znak");
+                            this.equation = this.equation.substr(0,this.equation.length-1) + char;
+                            //this.equation[this.equation.length-1]= char;
+                        }
+                        else
+                        {
+                         this.equation = this.equation + char;   
+                        }
                     },
                     emptyField()
                     {
@@ -102,8 +113,7 @@
                     getResult()
                     {
                         this.equation = eval(this.equation);
-                    }
-                    
+                    }                   
                  }
                 })
             });
