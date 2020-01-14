@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"><script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+ 
+    <title>Kalkulator </title>
+</head>
+<body>
+    
+
+   <style>
+   button
+   {
+       background-color: whitesmoke ;
+       width: 100%;
+    
+   }
+   input
+   {
+       background-color: whitesmoke;
+       width: 100%;
+   }
+
+   </style>
+    <div id="root">
+   <table>
+       <tr>
+           <td colspan="4" align="center">
+                <form action="">
+                
+                    <input type="text" name="" v-model="equation">
+                
+                </form>
+           </td>
+       </tr>
+       <tr>
+           <td><button v-on:click="addCharacter('%')" class="%">%</button></td>
+           <td><button v-on:click="emptyField()" class="CE">CE</button></td>
+           <td><button v-on:click="emptyField()" class="C">C</button></td> 
+           <td> <button v-on:click="removeLast()" class="Delete" >&#9763;</button></td> 
+        </tr>
+    <tr>
+        <td><button v-on:click="addCharacter('(')" class="oklepaj">(</button></td>
+        <td><button v-on:click="addCharacter(')')" class="zaklepaj;">)</button></td>
+        <td><button v-on:click="addCharacter('7')" class="x">x</button></td>
+        <td> <button v-on:click="addCharacter('/')" class="/">&#247;</button> </td>
+    </tr>
+    <tr>
+        <td><button v-on:click="addCharacter('7')" class="7">7</button></td>
+        <td><button v-on:click="addCharacter('8')" class="8">8</button></td>
+        <td><button v-on:click="addCharacter('9')" class="9">9</button></td>
+        <td> <button v-on:click="addCharacter('*')" class="krat">&#215;</button> </td>
+    </tr>
+    <tr>
+        <td><button v-on:click="addCharacter('4')" class="4">4</button></td>
+        <td><button v-on:click="addCharacter('5')" class="5">5</button></td>
+        <td><button v-on:click="addCharacter('6')" class="6">6</button></td>
+        <td> <button v-on:click="addCharacter('-')" class="minus">&#8722;</button> </td>
+    </tr>
+    <tr>
+        <td><button v-on:click="addCharacter('1')" class="1">1</button></td>
+        <td><button v-on:click="addCharacter('2')" class="2">2</button></td>
+        <td><button v-on:click="addCharacter('3')" class="3">3</button></td>
+        <td> <button v-on:click="addCharacter('+')" class="plus">&#43;</button> </td>
+    </tr>
+    <tr>
+        <td><button v-on:click="addCharacter('7')" class="pm">&#177;</button></td>
+        <td><button v-on:click="addCharacter('0')" class="0">0</button></td>
+        <td><button v-on:click="addCharacter(',')" class="vejica">,</button></td>
+        <td> <button v-on:click="getResult()" class="enako">&#61;</button> </td>
+    </tr>
+
+
+   </table>
+    
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                new Vue({
+                    el: "#root",
+                    data: () => ({
+                        equation: ""
+                    }),
+                    methods:{
+                    addCharacter(char)
+                    {
+                        this.equation = this.equation + char;
+                    },
+                    emptyField()
+                    {
+                        this.equation ="";
+                    },
+                    removeLast()
+                    {
+                        this.equation=this.equation.slice(0, -1);
+                    },
+                    getResult()
+                    {
+                        this.equation = eval(this.equation);
+                    }
+                    
+                 }
+                })
+            });
+
+        </script>
+        </div>
+</body>
+</html>
