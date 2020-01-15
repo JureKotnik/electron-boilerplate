@@ -25,6 +25,11 @@
        background-color: whitesmoke;
        width: 100%;
    }
+   table
+   {
+       width: 100%;
+       height: fit-content;
+   }
 
    </style>
     <div id="root">
@@ -33,7 +38,7 @@
            <td colspan="4" align="center">
                 <form action="">
                 
-                    <input type="text" name="" v-model="equation">
+                    <input type="text" name="" v-model="equation" class="a">
                 
                 </form>
            </td>
@@ -47,7 +52,7 @@
     <tr>
         <td><button v-on:click="addCharacter('(')" class="oklepaj">(</button></td>
         <td><button v-on:click="addCharacter(')')" class="zaklepaj;">)</button></td>
-        <td><button v-on:click="addCharacter('7')" class="x">x</button></td>
+        <td><button v-on:click="addCharacter('x')" class="x">x</button></td>
         <td> <button v-on:click="addCharacter('/')" class="/">&#247;</button> </td>
     </tr>
     <tr>
@@ -88,31 +93,59 @@
                     }),
                     methods:{
                     addCharacter(char)
-                    {
+                    { 
                         var seznam= ["+","-","%","*","/"];
                         var zadnjiznak = this.equation[this.equation.length - 1];
-                        if(seznam.includes(char)&& seznam.includes(zadnjiznak))
+                        var stevilke = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9","("];
+                        var infinity = ["Infinity"];
+
+                           if (stevilke.includes(char) && this.equation == '') 
+                           {
+                            this.equation = this.equation +char;
+                            }
+
+                        else if(seznam.includes(char)&& seznam.includes(zadnjiznak))
                         {
-                            alert("Zamenjaj znak");
+                            
                             this.equation = this.equation.substr(0,this.equation.length-1) + char;
                             //this.equation[this.equation.length-1]= char;
                         }
-                        else
+                        else if(this.equation != '')
                         {
                          this.equation = this.equation + char;   
                         }
+                     
+                        
+                     
+                      
                     },
                     emptyField()
+                    
                     {
                         this.equation ="";
                     },
                     removeLast()
+
                     {
-                        this.equation=this.equation.slice(0, -1);
+                        this.equation=this.equation.ToString().slice(0, -1);
                     },
                     getResult()
+
                     {
-                        this.equation = eval(this.equation);
+                       
+                         if(this.equation.includes('/0'))
+                    {
+                    alert("ne deli z nic");
+
+                    }
+                         
+                         else
+                    {
+
+                    this.equation = eval(this.equation);
+
+                    }
+
                     }                   
                  }
                 })

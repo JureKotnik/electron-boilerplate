@@ -6,7 +6,7 @@ require('electron-debug')({
 
 function createWindow() {
     let win = new BrowserWindow({
-        width: 184,
+        width: 350,
         height: 225,
         resizable: false,
         icon: './app/icon.png',
