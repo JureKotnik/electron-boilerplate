@@ -9,14 +9,14 @@ function createWindow() {
         width: 400,
         height: 500,
         resizable: false,
-        icon: './app/icon.png',
+        icon: 'icon.png',
         webPreferences: {
             nodeIntegration: true
         }
     });
 
     win.setMenu(null);
-    win.loadFile('./app/main.js')
+    win.loadFile('test.html')
 }
 
 app.on('ready', createWindow)
