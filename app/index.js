@@ -6,8 +6,8 @@ require('electron-debug')({
 
 function createWindow() {
     let win = new BrowserWindow({
-        width: 350,
-        height: 225,
+        width: 400,
+        height: 500,
         resizable: false,
         icon: './app/icon.png',
         webPreferences: {
@@ -16,7 +16,7 @@ function createWindow() {
     });
 
     win.setMenu(null);
-    win.loadFile('./app/index.html')
+    win.loadFile('./app/main.js')
 }
 
 app.on('ready', createWindow)
